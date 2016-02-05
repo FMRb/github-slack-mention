@@ -1,0 +1,25 @@
+{
+  "name": "slack-github-mentions",
+  "version": "1.0.0",
+  "description": "Github webhook mentions event for slack room ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FMRb/github-slack-mention.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Felix Rubio (FMRb)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FMRb/github-slack-mention/issues"
+  },
+  "homepage": "https://github.com/FMRb/github-slack-mention#readme",
+  "dependencies": {
+    "hapi": "^13.0.0"
+  }
+}
