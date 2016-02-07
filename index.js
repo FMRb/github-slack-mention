@@ -7,8 +7,8 @@ const Hapi = require('hapi');
 const http = require('http');
 
 const server = new Hapi.Server();
-
-server.connection({port: 4567});
+const port = process.env.PORT || 4567;
+server.connection({port: port});
 
 server.route({
     method:'POST',
