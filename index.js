@@ -27,8 +27,6 @@ server.route({
 
 server.start(() => {
     console.log('Server running at: ', server.info.uri);
-    console.log('Slack hook: ', slackHook);
-    console.log('Github mention: ', githubMentionMatch);
 });
 
 
