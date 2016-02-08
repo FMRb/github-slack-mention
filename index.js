@@ -17,6 +17,7 @@ server.route({
     path: '/payload',
     handler: function (request, reply) {
         const comment = request.payload.comment;
+        console.log(123, request);
         if (containGithubMention(comment.body)) {
             slackBot(slackHook, comment);
         }
