@@ -17,10 +17,10 @@ server.route({
     path: '/payload',
     handler: function (request, reply) {
         const comment = request.payload.comment;
-        if (containGithubMention(body)) {
+        if (containGithubMention(comment.body)) {
             slackBot(slackHook, comment);
         }
-        console.log('PAYLOAD: body -> ', body);
+        console.log('PAYLOAD: body -> ', comment.body);
         reply('event checked');
     }
 });
