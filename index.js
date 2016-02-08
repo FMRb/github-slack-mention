@@ -1,15 +1,17 @@
 'use strict';
 
-const slackHook = process.env.SLACK_HOOK;
-const githubMentionMatch = process.env.GITHUB_MENTION;
+const slackHook = process.env.SLACK_HOOK || '';
+const githubMentionMatch = process.env.GITHUB_MENTION || '';
 
 const Hapi = require('hapi');
-const http = require('http');
+const slackBot = require('./lib/slackmentionbot.js');
+const keepalive = require('./lib/keepalive.js')
 
 const server = new Hapi.Server();
 const port = process.env.PORT || 4567;
 server.connection({port: port});
 
+keepalive(server, server.info.uri);
 server.route({
     method:'POST',
     path: '/payload',
@@ -17,9 +19,10 @@ server.route({
         const body = request.payload.comment.body;
         const user = request.payload.user;
         if (containGithubMention(body)) {
-            sendSlackNotification(body, user);
+            slackBot(slackHook, body, user);
         }
         console.log('PAYLOAD: body -> ', body);
+        reply('event checked');
     }
 });
 
@@ -31,11 +34,5 @@ server.start(() => {
 
 
 function containGithubMention(body) {
-    //TODO check match in body GITHUB_MENTION
-    return false;
-}
-
-function sendSlackNotification() {
-    //TODO send slack notification using SLACK_HOOK;
-    return;
+    return body.indexOf(githubMentionMatch) > -1;
 }
