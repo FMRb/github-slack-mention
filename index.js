@@ -16,10 +16,9 @@ server.route({
     method:'POST',
     path: '/payload',
     handler: function (request, reply) {
-        const body = request.payload.comment.body;
-        const user = request.payload.user;
+        const comment = request.payload.comment;
         if (containGithubMention(body)) {
-            slackBot(slackHook, body, user);
+            slackBot(slackHook, comment);
         }
         console.log('PAYLOAD: body -> ', body);
         reply('event checked');
