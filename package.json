@@ -15,7 +15,7 @@
     "nodejs"
   ],
   "author": "Felix Rubio (FMRb)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/FMRb/github-slack-mention/issues"
   },
